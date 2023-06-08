@@ -1,6 +1,6 @@
 # TechJobs, Console Edition Autograded Rubric
 
-For [this assignment](https://education.launchcode.org/java-web-dev-curriculum/assignments/hello-world), students are asked to complete a console app that allows users to browse, search, and print listings of open jobs.
+For [this assignment](https://education.launchcode.org/java-web-dev-curriculum/assignments/techjobs-console), students are asked to complete a console app that allows users to browse, search, and print listings of open jobs.
 
 ## Assignment Requirements
 
