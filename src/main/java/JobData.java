@@ -93,7 +93,7 @@ public class JobData {
         loadData();
         Set <HashMap<String, String>> temp;
         temp = allJobs;
-        Set <HashMap<String, String>> jobs = new HashSet<>();
+        Set <HashMap<String, String>> jobs = new LinkedHashSet<>();
         for (HashMap <String, String> job: temp)
             {
                 for (String val : job.values())
