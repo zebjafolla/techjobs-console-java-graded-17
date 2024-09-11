@@ -136,20 +136,3 @@ public class TechJobs {
 
     }
 }
-/*
-*****
- position type: Data Scientist / Business Intelligence
- name: Sr. IT Analyst (Data/BI)
- employer: Bull Moose Industries
- location: Saint Louis
- core competency: Statistical Analysis
- *****
-
- *****
- position type: Web - Back End
- name: Ruby specialist
- employer: LaunchCode
- location: Saint Louis
- core competency: Javascript
- *****
-*/
