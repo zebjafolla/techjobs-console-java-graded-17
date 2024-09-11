@@ -123,7 +123,7 @@ public class TechJobs {
         else
 
         {
-            System.out.println("");
+
             for (HashMap<String, String> position : someJobs)
             {
                 System.out.print("\n*****");
