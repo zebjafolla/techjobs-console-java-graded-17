@@ -39,7 +39,7 @@ public class TechJobs {
                     printJobs(JobData.findAll());
                 } else {
 
-                    ArrayList<String> results = JobData.findAll(columnChoice);
+                    LinkedHashSet<String> results = JobData.findAll(columnChoice);
 
                     System.out.println("\n*** All " + columnChoices.get(columnChoice) + " Values ***");
 
@@ -115,7 +115,7 @@ public class TechJobs {
     }
 
     // Print a list of jobs
-    private static void printJobs(Set<HashMap<String, String>> someJobs) {
+    private static void printJobs(LinkedHashSet<HashMap<String, String>> someJobs) {
         if (someJobs.size() == 0)
         {
             System.out.print("No Results");

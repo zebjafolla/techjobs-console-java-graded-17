@@ -15,7 +15,7 @@ public class JobData {
     private static final String DATA_FILE = "src/main/resources/job_data.csv";
     private static boolean isDataLoaded = false;
 
-    private static Set<HashMap<String, String>> allJobs;
+    private static LinkedHashSet<HashMap<String, String>> allJobs;
 
     /**
      * Fetch list of all values from loaded data,
@@ -24,12 +24,12 @@ public class JobData {
      * @param field The column to retrieve values from
      * @return List of all of the values of the given field
      */
-    public static ArrayList<String> findAll(String field) {
+    public static LinkedHashSet<String> findAll(String field) {
 
         // load data, if not already loaded
         loadData();
 
-        ArrayList<String> values = new ArrayList<>();
+        LinkedHashSet<String> values = new LinkedHashSet<>();
 
         for (HashMap<String, String> row : allJobs) {
             String aValue = row.get(field);
@@ -42,7 +42,7 @@ public class JobData {
         return values;
     }
 
-    public static Set<HashMap<String, String>> findAll() {
+    public static LinkedHashSet<HashMap<String, String>> findAll() {
 
         // load data, if not already loaded
         loadData();
@@ -61,12 +61,12 @@ public class JobData {
      * @param value Value of teh field to search for
      * @return List of all jobs matching the criteria
      */
-    public static Set<HashMap<String, String>> findByColumnAndValue(String column, String value) {
+    public static LinkedHashSet<HashMap<String, String>> findByColumnAndValue(String column, String value) {
 
         // load data, if not already loaded
         loadData();
 
-        Set<HashMap<String, String>> jobs = new HashSet<>();
+        LinkedHashSet<HashMap<String, String>> jobs = new LinkedHashSet<>();
 
         for (HashMap<String, String> row : allJobs) {
 
@@ -86,14 +86,14 @@ public class JobData {
      * @param value The search term to look for
      * @return      List of all jobs with at least one field containing the value
      */
-    public static Set<HashMap<String, String>> findByValue(String value) {
+    public static LinkedHashSet<HashMap<String, String>> findByValue(String value) {
 
         // load data, if not already loaded
 
         loadData();
         Set <HashMap<String, String>> temp;
         temp = allJobs;
-        Set <HashMap<String, String>> jobs = new LinkedHashSet<>();
+        LinkedHashSet <HashMap<String, String>> jobs = new LinkedHashSet<>();
         for (HashMap <String, String> job: temp)
             {
                 for (String val : job.values())
@@ -128,7 +128,7 @@ public class JobData {
             Integer numberOfColumns = records.get(0).size();
             String[] headers = parser.getHeaderMap().keySet().toArray(new String[numberOfColumns]);
 
-            allJobs = new HashSet<>();
+            allJobs = new LinkedHashSet<>();
 
             // Put the records into a more friendly format
             for (CSVRecord record : records) {
