@@ -118,21 +118,21 @@ public class TechJobs {
     private static void printJobs(Set<HashMap<String, String>> someJobs) {
         if (someJobs.size() == 0)
         {
-            System.out.println("No Results");
+            System.out.print("No Results");
         }
         else
 
         {
-            System.out.println();
+            System.out.println("");
             for (HashMap<String, String> position : someJobs)
             {
-                System.out.println("*****");
+                System.out.println("\n*****");
                 Set <String> keys = position.keySet();
                 for (Object key: keys)
                 {
                     System.out.println(key + ": " + position.get(key));
                 }
-                System.out.println("*****\n");
+                System.out.print("*****\n");
             }
         }
 
