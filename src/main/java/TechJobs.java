@@ -121,7 +121,9 @@ public class TechJobs {
             System.out.println("No Results");
         }
         else
+
         {
+            System.out.println();
             for (HashMap<String, String> position : someJobs)
             {
                 System.out.println("*****");
