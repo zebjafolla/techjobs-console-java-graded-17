@@ -5,10 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -18,7 +15,7 @@ public class JobData {
     private static final String DATA_FILE = "src/main/resources/job_data.csv";
     private static boolean isDataLoaded = false;
 
-    private static ArrayList<HashMap<String, String>> allJobs;
+    private static Set<HashMap<String, String>> allJobs;
 
     /**
      * Fetch list of all values from loaded data,
@@ -45,7 +42,7 @@ public class JobData {
         return values;
     }
 
-    public static ArrayList<HashMap<String, String>> findAll() {
+    public static Set<HashMap<String, String>> findAll() {
 
         // load data, if not already loaded
         loadData();
@@ -64,12 +61,12 @@ public class JobData {
      * @param value Value of teh field to search for
      * @return List of all jobs matching the criteria
      */
-    public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
+    public static Set<HashMap<String, String>> findByColumnAndValue(String column, String value) {
 
         // load data, if not already loaded
         loadData();
 
-        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        Set<HashMap<String, String>> jobs = new HashSet<>();
 
         for (HashMap<String, String> row : allJobs) {
 
@@ -89,13 +86,27 @@ public class JobData {
      * @param value The search term to look for
      * @return      List of all jobs with at least one field containing the value
      */
-    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+    public static Set<HashMap<String, String>> findByValue(String value) {
 
         // load data, if not already loaded
-        loadData();
 
+        loadData();
+        Set <HashMap<String, String>> temp;
+        temp = allJobs;
+        Set <HashMap<String, String>> jobs = new HashSet<>();
+        for (HashMap <String, String> job: temp)
+            {
+                for (String val : job.values())
+                {
+                    if (val.toLowerCase().contains(value.toLowerCase()))
+                    {
+                        jobs.add(job);
+                    }
+                }
+
+            }
         // TODO - implement this method
-        return null;
+        return jobs;
     }
 
     /**
@@ -117,7 +128,7 @@ public class JobData {
             Integer numberOfColumns = records.get(0).size();
             String[] headers = parser.getHeaderMap().keySet().toArray(new String[numberOfColumns]);
 
-            allJobs = new ArrayList<>();
+            allJobs = new HashSet<>();
 
             // Put the records into a more friendly format
             for (CSVRecord record : records) {

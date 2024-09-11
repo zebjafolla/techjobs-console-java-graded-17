@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -118,8 +115,41 @@ public class TechJobs {
     }
 
     // Print a list of jobs
-    private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+    private static void printJobs(Set<HashMap<String, String>> someJobs) {
+        if (someJobs.size() == 0)
+        {
+            System.out.println("No Results");
+        }
+        else
+        {
+            for (HashMap<String, String> position : someJobs)
+            {
+                System.out.println("*****");
+                Set <String> keys = position.keySet();
+                for (Object key: keys)
+                {
+                    System.out.println(key + ": " + position.get(key));
+                }
+                System.out.println("*****\n");
+            }
+        }
 
-        System.out.println("printJobs is not implemented yet");
     }
 }
+/*
+*****
+ position type: Data Scientist / Business Intelligence
+ name: Sr. IT Analyst (Data/BI)
+ employer: Bull Moose Industries
+ location: Saint Louis
+ core competency: Statistical Analysis
+ *****
+
+ *****
+ position type: Web - Back End
+ name: Ruby specialist
+ employer: LaunchCode
+ location: Saint Louis
+ core competency: Javascript
+ *****
+*/
